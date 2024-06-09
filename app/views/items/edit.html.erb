@@ -1,0 +1,38 @@
+<div class="container py-5 mb-5">
+  <h1 class="p-5">Edit Item</h1>
+
+  <%= form_with(model: @item, local: true, class: "needs-validation") do |form| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :quantity, class: "form-label" %>
+      <%= form.number_field :quantity, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit 'Update Item', class: "btn btn-primary me-2" %>
+      <%= link_to 'Back', items_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
